@@ -1,0 +1,200 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MyFootZalDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Isci">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Rezerv_to_Isci" Relationship="Self.FK_Rezerv_to_Isci_Isci" FromRole="Isci" ToRole="Rezerv_to_Isci" />
+  </EntityType>
+  <EntityType Name="Musteri">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Rezerv" Relationship="Self.FK_Rezerv_Musteri" FromRole="Musteri" ToRole="Rezerv" />
+  </EntityType>
+  <EntityType Name="Otaq">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Capacity" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Rezerv_to_Otaq" Relationship="Self.FK_Rezerv_to_Otaq_Otaq" FromRole="Otaq" ToRole="Rezerv_to_Otaq" />
+  </EntityType>
+  <EntityType Name="Rezerv">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MusteriID" Type="Int32" Nullable="false" />
+    <Property Name="OtaqID" Type="Int32" Nullable="false" />
+    <Property Name="StadionID" Type="Int32" Nullable="false" />
+    <Property Name="BaslanqicTarix" Type="Int32" Nullable="false" />
+    <Property Name="BitisTarix" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Musteri" Relationship="Self.FK_Rezerv_Musteri" FromRole="Rezerv" ToRole="Musteri" />
+    <NavigationProperty Name="Stadion" Relationship="Self.FK_Rezerv_Stadion" FromRole="Rezerv" ToRole="Stadion" />
+    <NavigationProperty Name="Rezerv_to_Isci" Relationship="Self.FK_Rezerv_to_Isci_Rezerv" FromRole="Rezerv" ToRole="Rezerv_to_Isci" />
+    <NavigationProperty Name="Rezerv_to_Otaq" Relationship="Self.FK_Rezerv_to_Otaq_Rezerv" FromRole="Rezerv" ToRole="Rezerv_to_Otaq" />
+  </EntityType>
+  <EntityType Name="Rezerv_to_Isci">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IsciID" Type="Int32" Nullable="false" />
+    <Property Name="RezervID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Isci" Relationship="Self.FK_Rezerv_to_Isci_Isci" FromRole="Rezerv_to_Isci" ToRole="Isci" />
+    <NavigationProperty Name="Rezerv" Relationship="Self.FK_Rezerv_to_Isci_Rezerv" FromRole="Rezerv_to_Isci" ToRole="Rezerv" />
+  </EntityType>
+  <EntityType Name="Rezerv_to_Otaq">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RezervID" Type="Int32" Nullable="false" />
+    <Property Name="OtaqID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Otaq" Relationship="Self.FK_Rezerv_to_Otaq_Otaq" FromRole="Rezerv_to_Otaq" ToRole="Otaq" />
+    <NavigationProperty Name="Rezerv" Relationship="Self.FK_Rezerv_to_Otaq_Rezerv" FromRole="Rezerv_to_Otaq" ToRole="Rezerv" />
+  </EntityType>
+  <EntityType Name="Stadion">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Price" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <NavigationProperty Name="Rezerv" Relationship="Self.FK_Rezerv_Stadion" FromRole="Stadion" ToRole="Rezerv" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_Rezerv_to_Isci_Isci">
+    <End Role="Isci" Type="Self.Isci" Multiplicity="1" />
+    <End Role="Rezerv_to_Isci" Type="Self.Rezerv_to_Isci" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Isci">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Rezerv_to_Isci">
+        <PropertyRef Name="IsciID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Rezerv_Musteri">
+    <End Role="Musteri" Type="Self.Musteri" Multiplicity="1" />
+    <End Role="Rezerv" Type="Self.Rezerv" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Musteri">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Rezerv">
+        <PropertyRef Name="MusteriID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Rezerv_to_Otaq_Otaq">
+    <End Role="Otaq" Type="Self.Otaq" Multiplicity="1" />
+    <End Role="Rezerv_to_Otaq" Type="Self.Rezerv_to_Otaq" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Otaq">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Rezerv_to_Otaq">
+        <PropertyRef Name="OtaqID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Rezerv_Stadion">
+    <End Role="Stadion" Type="Self.Stadion" Multiplicity="1" />
+    <End Role="Rezerv" Type="Self.Rezerv" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Stadion">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Rezerv">
+        <PropertyRef Name="StadionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Rezerv_to_Isci_Rezerv">
+    <End Role="Rezerv" Type="Self.Rezerv" Multiplicity="1" />
+    <End Role="Rezerv_to_Isci" Type="Self.Rezerv_to_Isci" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rezerv">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Rezerv_to_Isci">
+        <PropertyRef Name="RezervID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Rezerv_to_Otaq_Rezerv">
+    <End Role="Rezerv" Type="Self.Rezerv" Multiplicity="1" />
+    <End Role="Rezerv_to_Otaq" Type="Self.Rezerv_to_Otaq" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rezerv">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Rezerv_to_Otaq">
+        <PropertyRef Name="RezervID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MyFootZalDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Isci" EntityType="Self.Isci" />
+    <EntitySet Name="Musteri" EntityType="Self.Musteri" />
+    <EntitySet Name="Otaq" EntityType="Self.Otaq" />
+    <EntitySet Name="Rezerv" EntityType="Self.Rezerv" />
+    <EntitySet Name="Rezerv_to_Isci" EntityType="Self.Rezerv_to_Isci" />
+    <EntitySet Name="Rezerv_to_Otaq" EntityType="Self.Rezerv_to_Otaq" />
+    <EntitySet Name="Stadion" EntityType="Self.Stadion" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <AssociationSet Name="FK_Rezerv_to_Isci_Isci" Association="Self.FK_Rezerv_to_Isci_Isci">
+      <End Role="Isci" EntitySet="Isci" />
+      <End Role="Rezerv_to_Isci" EntitySet="Rezerv_to_Isci" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Rezerv_Musteri" Association="Self.FK_Rezerv_Musteri">
+      <End Role="Musteri" EntitySet="Musteri" />
+      <End Role="Rezerv" EntitySet="Rezerv" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Rezerv_to_Otaq_Otaq" Association="Self.FK_Rezerv_to_Otaq_Otaq">
+      <End Role="Otaq" EntitySet="Otaq" />
+      <End Role="Rezerv_to_Otaq" EntitySet="Rezerv_to_Otaq" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Rezerv_Stadion" Association="Self.FK_Rezerv_Stadion">
+      <End Role="Stadion" EntitySet="Stadion" />
+      <End Role="Rezerv" EntitySet="Rezerv" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Rezerv_to_Isci_Rezerv" Association="Self.FK_Rezerv_to_Isci_Rezerv">
+      <End Role="Rezerv" EntitySet="Rezerv" />
+      <End Role="Rezerv_to_Isci" EntitySet="Rezerv_to_Isci" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Rezerv_to_Otaq_Rezerv" Association="Self.FK_Rezerv_to_Otaq_Rezerv">
+      <End Role="Rezerv" EntitySet="Rezerv" />
+      <End Role="Rezerv_to_Otaq" EntitySet="Rezerv_to_Otaq" />
+    </AssociationSet>
+    <EntitySet Name="Admin" EntityType="MyFootZalDBModel.Admin" />
+  </EntityContainer>
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+</Schema>

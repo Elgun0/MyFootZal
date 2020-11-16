@@ -1,0 +1,16 @@
+C:\Users\esahb\source\repos\MyFootZalApp\MyFootZalApp\bin\Debug\MyFootZalApp.exe.config
+C:\Users\esahb\source\repos\MyFootZalApp\MyFootZalApp\bin\Debug\MyFootZalApp.exe
+C:\Users\esahb\source\repos\MyFootZalApp\MyFootZalApp\bin\Debug\MyFootZalApp.pdb
+C:\Users\esahb\source\repos\MyFootZalApp\MyFootZalApp\bin\Debug\EntityFramework.dll
+C:\Users\esahb\source\repos\MyFootZalApp\MyFootZalApp\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\esahb\source\repos\MyFootZalApp\MyFootZalApp\bin\Debug\EntityFramework.xml
+C:\Users\esahb\source\repos\MyFootZalApp\MyFootZalApp\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\esahb\source\repos\MyFootZalApp\MyFootZalApp\obj\Debug\MyFootZalApp.csprojAssemblyReference.cache
+C:\Users\esahb\source\repos\MyFootZalApp\MyFootZalApp\obj\Debug\MyFootZalApp.Form1.resources
+C:\Users\esahb\source\repos\MyFootZalApp\MyFootZalApp\obj\Debug\MyFootZalApp.Properties.Resources.resources
+C:\Users\esahb\source\repos\MyFootZalApp\MyFootZalApp\obj\Debug\MyFootZalApp.csproj.GenerateResource.cache
+C:\Users\esahb\source\repos\MyFootZalApp\MyFootZalApp\obj\Debug\MyFootZalApp.csproj.CoreCompileInputs.cache
+C:\Users\esahb\source\repos\MyFootZalApp\MyFootZalApp\obj\Debug\MyFootZalApp.csproj.CopyComplete
+C:\Users\esahb\source\repos\MyFootZalApp\MyFootZalApp\obj\Debug\MyFootZalApp.exe
+C:\Users\esahb\source\repos\MyFootZalApp\MyFootZalApp\obj\Debug\MyFootZalApp.pdb
+C:\Users\esahb\source\repos\MyFootZalApp\MyFootZalApp\obj\Debug\MyFootZalApp.WorkerDash.resources
